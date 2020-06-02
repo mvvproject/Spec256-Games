@@ -1,0 +1,328 @@
+Bubbler 
+256colour edition.
+Initail release: 29th April 2004
+Updated: 3rd May 2004
+
+Original Game written by ACG/Ultimate
+
+Coloured by MatGubbins.
+
+Graphics have been coloured to my own personal 
+preference. If you don`t like what I have done 
+then get off your fat arse and create your own 
+version.
+
+The game play has not been altered in any way.
+
+
+THIS GAME REQUIRES A .SNA FILE OF THE GAME TO WORK.
+THIS FILE IS NOT INCLUDED WITH THIS DOWNLOAD.
+DO NOT ASK ME FOR THE GAME.
+
+
+Important bit: updated 3rd May 2004
+
+There has been a bit of trouble with a few .sna files.
+So, to get this game up and running properly you MUST 
+do the following:
+
+1: Load your original Bubbler tap/tzx file into the 
+   emulator.
+
+2: When the spinning BUBBLER logo appears, save a .sna
+   file.
+
+3: Reload the fresh .sna file.
+
+4: Select GFX editor - if it is not highlighted then 
+   EFFECTS - 256 Colors.
+   Switch to 256 Colors and start GFXing now
+   Make sure that the following are selected.
+   Expand usual memory to GFX (0 to 00, 1 to FF)
+   Skip all GFX bytes already having color info (not FF or 00)
+   Allocated banks only
+   Handle ROM also
+
+   Press OK
+
+5: Press the LOAD GFX Memory icon (top left corner)
+
+6: Select the bubbler256.GFX file
+
+7: Everthing should now be in 256 colours.
+   The spinning Bubbler logo should now be coloured red.
+
+8: Save a NEW .sna or .ezx file.
+
+9: Play the game.
+
+Please note:
+
+Remember to save a new version of the game with all 
+the 256 colour data.
+
+Don`t save over your original .SNA file.
+(If you do then don`t blame me!)
+  
+Reason:
+Why have I got to do all this just to play the game?
+
+The programmers of the game decided to invert all 
+the program and graphic code. When the game loaded 
+and ran, the game would inverse all the code so that
+it would run properly.
+
+Don`t try and use a .sna file that has the Bubbler 
+loading screen on it. The game has to inverse all 
+the bytes before use.
+
+Also, don`t use a .sna file that has already had a 
+game played on it - the bottle graphic may be reversed 
+and the table data won`t be written over the spinning 
+Bubbler logo - this will cause the graphics to appear 
+corrupted in 256 mode.
+
+
+
+==============================================
+
+- Game POKES -
+
+These pokes only work via the DEBUG WINDOW 
+Press the 10 icon first to turn on DECIMAL mode!
+
+Use as required. Original value in brackets.
+
+
+POKE 38797,0 (202)
+This will remove all nasty aliens, the lift and stop the 
+bubble gun/tower from firing shots.
+It does not stop the bonus bubbles from appearing.
+Only poke the game WHEN IT HAS BEEN PAUSED!
+If aliens are still on screen, then they will only dissapear 
+when they have been killed.
+You WILL need to poke the original value back in for some 
+parts of each level to bring back the lift.
+
+
+POKE 57515,0 (50)
+POKE 57516,0 (222)
+POKE 57517,0 (222)
+These give infinate lives - required!
+It also stops the clock for the FIRST LIFE ONLY!
+(Your Sinclair made a complete hash of the description that 
+I sent to them)
+
+
+
+
+Known Problems
+--------------
+
+-Spinning Bubbler Logo-
+
+The spinning logo appears only when the game has been loaded.
+Once a key has been pressed, the logo is scrolled off screen.
+The memory where the logo is stored is then overwritten with 
+data.
+SO... there will never be a spinning full colour 256 Bubbler 
+logo as it is too much trouble trying to colour the bugger! 
+
+
+-Menu Screen-
+
+Scroller message prints a temporary graphic outside the box 
+and then copies it inside the box.
+POKEing the actual screen attriute with 0 does nothing.
+
+-Game screen-
+
+Scroller for the STAGE message prints a graphic next to the 
+score and then copies it to the box.
+As above.
+
+
+
+---------------------
+3rd May 2004
+---------------------
+
+Problem hopefully solved with various .sna files.
+See above for the soloution.
+
+---------------------
+29th April 2004
+---------------------
+- INITIAL RELEASE -
+
+All main sprites are coloured and have been tested on all 
+5 levels of the game.
+Walkways remain as their original monotone colour so 
+that it makes it easier to spot the nasties and the bullets.
+
+
+- Info about some sprites - 
+
+The graphics for the uncorked/corked bottles are only half drawn.
+They are mirrored (in memory) during each frame update. 
+Now you know why the game is so slow! 
+
+
+
+==============================================
+
+
+
+To do list
+----------
+
+I`ve done everything that I wanted to change.
+
+
+==============================================
+
+
+
+
+Graphic Section breakdown
+-------------------------
+
+24680 - 24807
+Bubbler logo
+Sprite width = 8
+
+25235 - 25347
+Player 1 and 2 arrow
+Sprite width = 3
+
+25677 - 25751
+Bottle (panel)
+Sprite width = 3
+
+25754 - 25823
+Cork (panel)
+Sprite width= 2
+
+25824 - 26103
+Character Set (7 bytes per letter)
+Sprite width= 1
+
+26104 - 
+DIRECTION GAU (panel) (7 bytes per letter)
+Sprite width= 1
+
+Following graphics are stored as 
+MASK byte, SPRITE byte
+
+26450 - 27066
+3 bubble nastie
+Sprite width = 6 
+
+27070 - 27610
+Spike nastie 
+Sprite width = 6 
+
+27624 - 27752
+? mark bubble
+Sprite width = 4 
+
+27756 - 27821
+Bomb
+Sprite width= 2 
+
+27824 - 27967
+Alarm clock
+Sprite width = 6 
+
+27970 - 28009
+Extra life
+Sprite width = 4 
+
+28016 - 28072
+1000 PTS
+Sprite width = 4 
+
+28078 - 28111
+Small explosion
+Sprite width= 2 
+
+28114 - 28125
+Small bullet
+Sprite width = 2 
+
+28128 - 28297
+Expanding bubble (from bottle)
+Sprite width = 4
+
+28300 - 28363
+1 frame explosion
+Sprite width = 4
+
+28366 - 28495
+Hovering bubble
+Sprite width = 4
+
+28525 - 29298
+Full explosion
+Sprite width = 6
+
+29290 - 29580
+Skull & crossbones part of bottle
+Bottle top (uncorked)
+Bottle top (corked)
+Sprite width = 4
+
+29584 - 30204
+Various walkway graphics
+Sprite width = 4
+
+30211 - 30660
+Main bubble sprite
+Sprite width = 6
+
+30757 - 30835
+Spike
+Sprite width = 2
+
+30837 - 33019
+Various walkway graphics
+Sprite width = 4
+
+33031 - 33247
+Lift 
+sprite width = 6
+
+33255 - 33258
+Direction guide graphic
+Sprite width = 7
+
+33537 - 33638
+Flying Saucer 
+Sprite width = 6
+
+33641 - 33717
+4 bullets
+Sprite width = 2
+
+33721 - 33994
+Crab 
+Sprite width = 8
+
+33997 - 34092
+Floor spike
+Sprite width = 6
+
+34101 - 34251
+Bubble tower/gun
+Sprite width = 6
+
+34259 - 34532
+Nasty generator
+Sprite width = 6
+
+
+
+
+
+
+

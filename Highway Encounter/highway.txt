@@ -1,0 +1,202 @@
+Highway Encounter 
+256colour edition.
+Initail release:13th April 2004
+Last update:16th April 2004
+
+Original Game written by Costa Panayi
+
+Coloured by MatGubbins
+
+The original SNA file has requied modifications to get some of the 
+graphics to display properly. They are described in the fixes below.
+
+The game play has not been altered in any way.
+
+==============================================
+
+
+Known Problems
+--------------
+
+-Zone 0-
+
+To sort out the odd pixel here and there with the space ship. 
+Due to the way that it is drawn in buffer memory it will be a hit and 
+miss affair.
+
+
+
+---------------------
+Fixed 16th April 2004
+---------------------
+encout6.ezx
+
+-Vortex logo on title screen-
+
+Found m/c routine that colours the Vortex logo.
+Changed the byte from 
+48 (ink black, paper yellow) 
+to 7 (ink white, paper black)
+Poke 45333,7
+Logo has also been coloured. 
+There, that looks better!
+
+
+---------------------
+Fixed 15th April 2004
+---------------------
+
+SNA file is back to 128k version.
+
+-Zone 0-
+
+Ship now disolves when destroyed - yay!
+
+-Display panel-
+
+Active droid is now shown.
+
+-Title Screen-
+
+Although not 100% attribute accurate, the character set looks better. 
+
+
+---------------------
+Fixed 14th April 2004
+---------------------
+
+SNA file is now 48k in size.
+This helps when graphics need to be edited with SGE.
+
+
+-Zone 19,18,17,16-
+
+Green attribute top left section.
+Found character block that represented it.
+
+-Zone 21-
+
+Blue sea/river section top right of screen.
+A bit more involved this... so sit tight.
+Found the attributes (colour) that represented the 2 character blocks.
+The attribute was 1 (decimal). 
+Poked it to 15.
+Inversed the graphics.
+(Hard to explain, I know)
+Poke 31073,15
+Poke 31074,15
+
+ 
+-Zone 17,16, 15-
+
+Beach sea section bottom right of screen.
+As described above, poked attrubute to 15, but did not require the graphics
+to be inversed.
+There is a very slight shade difference in the yellow.
+Poke 31129,15
+Poke 31130,15
+Poke 31131,15
+
+Zone 21,17,16 and 15 now look weird in normal mode.
+
+-Messages-
+ 
+LASERTRON ACTIVATED graphic found and coloured
+
+-Odd pixels-
+
+Here and there...
+
+==============================================
+
+
+
+
+Facts
+-----
+
+The words HIGHWAY ENCOUNTER are stored as a graphic and 
+can be changed to say anything you want it to be (within reason). 
+
+
+
+
+==============================================
+
+
+
+To do list
+----------
+
+Try and fix Everthing!
+
+==============================================
+
+
+
+
+Graphic Section breakdown
+-------------------------
+
+5B00H - 5BD6H   23296 - 23510
+Graphics for the number and character set.
+GFX Editor width = 1
+Sprite Finder width = 1
+Only 6 bytes per letter/number.
+
+5E60H - 601FH   24160 - 24607
+Graphic for the Vortex logo.
+GFX Editor width = 8.
+Sprite Finder width = 9
+Set Bits are black.
+Paper bits are yellow.
+
+6020H - 641FH   24608 - 25631
+Graphic for the ingame display panel.
+GFX Editor width = 8 (makes life slightly easier to decode)
+Sprite Finder width = 32
+Has to be coloured line by line.
+Copied to the screen at the start of each new game.
+
+7100H - 78FFH   28928 - 30975
+Graphics for the scenery.
+GFX Editor width = 1 
+Sprite Finder width = 1
+Some graphics are repeated in other sections so be careful!
+
+7900H -         30976  
+The attribute file for the above graphics.
+
+9544H - 95E1H   38212 - 38369
+Graphics for the zone counter
+GFX Editor width = 1
+Sprite Finder width = 1
+Colour purple.
+
+A490H - A46CH   42128 - 42092
+Graphics for the ingame score.
+GFX Editor width = 1
+Sprite Finder width = 1
+Colour yellow.
+
+AB00H - B09FH   43776 - 45215
+Graphic for the space ship
+GFX Editor width = any
+Sprite Finder width = 13 to 21 (Different sectons appear)
+Has to be coloured line by line.
+
+B8F0H - D8FFH   47344 - 55551
+Graphics for the game.
+GFX Editor width = 6 
+Sprite finder width = 6.
+Graphics are stored upside down.
+Sequence -
+First 3 bytes are mask (Set mask bits as pure white FF)
+Next 3 bytes are graphic (Set bit as required colour)
+
+D900 - FF94H    55552 - 65428
+This is the screen buffer which will change thoughout the game.
+Sprite Finder width = 32
+Don`t bother changing any graphics here as they will be lost!
+
+
